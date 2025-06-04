@@ -4,8 +4,8 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<!-- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page. -->
-{: .prompt-tip }
+<!-- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
+{: .prompt-tip } -->
 
 ## HOT100
 
@@ -15,17 +15,19 @@ order: 4
 - [X] #128 最长连续序列
 
 ### 双指针
-- [ ] #283 移动零
-- [ ] #11 盛最多水的容器
-- [ ] #15 三数之和
-- [ ] #42 接雨水
+- [X] #283 移动零
+- [X] #11 盛最多水的容器
+- [X] #15 三数之和
+- [X] #42 接雨水
 
 ### 滑动窗口
-- [ ] #3 无重复字符的最长子串
-- [ ] #438 找到字符串中所有字母异位词
-- [ ] #560 和为 K 的子数组
-- [ ] #239 滑动窗口最大值
-- [ ] #76 最小覆盖子串
+- [X] #3 无重复字符的最长子串
+- [X] #438 找到字符串中所有字母异位词
+
+### 子串
+- [X] #560 和为 K 的子数组
+- [X] #239 滑动窗口最大值
+- [X] #76 最小覆盖子串
 
 ### 普通数组
 - [ ] #53 最大子数组和
