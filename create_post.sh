@@ -60,7 +60,7 @@ cat <<EOF >"$FULL_PATH"
 ---
 title: "$POST_TITLE"
 date: $CURRENT_DATETIME
-categories: [LEETCODE, HOT100]
+categories: [JAVA, JAVA基础]
 tags: [技巧, 中等]
 pin: false
 toc: true
