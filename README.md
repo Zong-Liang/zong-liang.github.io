@@ -1,5 +1,5 @@
 # Daily_Blogging
 
-<img src="assets/img/Golden_Retriever.svg" alt="Golden_Retriever" width="200" height="200">
+![](https://cdn.jsdelivr.net/gh/Zong-Liang/blog_images/blog/20251118102911817.svg)
 
 ## Talk is cheap, show me the blog.
