@@ -1,7 +1,7 @@
 ---
 title: 判空最佳实践
 date: 2024-04-01 06:00:00 +0800
-categories: [Daily Coding, Experience Accumulation，Null Check]
+categories: [Daily Coding, Experience Accumulation, Null Check]
 tags: [Null Check]
 toc: true
 math: true
@@ -12,7 +12,7 @@ image:
   lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
 ---
 
-“判空”（Null Check）看似简单，却是 Java 开发中出现 Bug（尤其是 `NullPointerException`，即 NPE）最频繁的地方，也是代码 ba'd的重灾区。
+“判空”（Null Check）看似简单，却是 Java 开发中出现 Bug（尤其是 `NullPointerException`，即 NPE）最频繁的地方，也是代码“坏味道”的重灾区。
 
 在代码规范和实际开发中，我们不仅仅关注“怎么判空”，更关注 **“为什么需要判空”** 以及 **“如何优雅地处理空值”**。
 
