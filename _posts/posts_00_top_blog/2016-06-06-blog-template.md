@@ -1,0 +1,19 @@
+---
+title: 置顶
+date: 1999-07-26 06:00:00 +0800
+categories: [置顶]
+tags: [置顶]
+toc: true
+math: true
+pin: true
+render_with_liquid: false
+image:
+  path: https://cdn.jsdelivr.net/gh/Zong-Liang/blog_images/blog/2024/daily_coding/20251122212219607.png
+  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
+---
+
+> 愿世界和平。
+{: .prompt-info }
+
+> World Peace.
+{: .prompt-info }
