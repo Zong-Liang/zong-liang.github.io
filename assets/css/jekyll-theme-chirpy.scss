@@ -55,7 +55,6 @@
   --search-icon-color: #988a7d;
   --input-focus-border-color: rgb(138 106 82 / 28%);
   --search-surface: #fcf8f1;
-  --search-focus-ring: rgb(138 106 82 / 10%);
   --page-atmosphere: none;
   --chrome-surface: #fcf8f1;
   --chrome-border: rgb(98 84 70 / 10%);
@@ -73,7 +72,6 @@
   --card-bg: #fcf8f1;
   --card-hover-bg: #f6efe5;
   --card-shadow: none;
-  --surface-top-highlight: rgb(255 255 255 / 0%);
   --footnote-target-bg: #f2e8dc;
   --tb-odd-bg: #fdf9f2;
   --tb-even-bg: #f7f1e8;
@@ -170,7 +168,6 @@
   --search-icon-color: #8e8276;
   --input-focus-border-color: rgb(195 161 136 / 30%);
   --search-surface: #191614;
-  --search-focus-ring: rgb(195 161 136 / 10%);
   --page-atmosphere: none;
   --chrome-surface: #191614;
   --chrome-border: rgb(255 255 255 / 8%);
@@ -188,7 +185,6 @@
   --card-bg: #191614;
   --card-hover-bg: #211d1a;
   --card-shadow: none;
-  --surface-top-highlight: rgb(255 255 255 / 0%);
   --footnote-target-bg: #2b241f;
   --tb-odd-bg: #1b1815;
   --tb-even-bg: #151210;
@@ -264,10 +260,8 @@ html[data-mode='dark'] {
     'Source Han Serif SC', 'Songti SC', 'Palatino Linotype', Georgia, serif;
   --anthropic-mono: 'JetBrains Mono Variable', 'Sarasa Mono SC', 'Cascadia Mono',
     'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
-  --anthropic-panel-blur: none;
   --anthropic-radius-lg: 20px;
   --anthropic-radius-md: 16px;
-  --anthropic-radius-sm: 12px;
   --right-rail-width: 17rem;
 }
 
@@ -357,6 +351,7 @@ h6,
 
 #topbar-title {
   font-family: var(--anthropic-sans);
+  font-size: 1.08rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -543,11 +538,6 @@ h6,
   #breadcrumb {
     margin-left: 0.75rem;
   }
-}
-
-#topbar-title {
-  font-size: 1.08rem;
-  letter-spacing: -0.01em;
 }
 
 #sidebar-trigger,
@@ -754,7 +744,6 @@ footer,
 .post-tag,
 .btn,
 #search,
-#search-input,
 #archives .archive-entry-link {
   font-family: var(--anthropic-sans);
 }
@@ -1337,7 +1326,6 @@ footer p:first-child {
   margin-left: 0;
   position: static;
   top: auto;
-  font-family: var(--anthropic-sans);
   font-size: 1rem;
   font-weight: 520;
   line-height: 1.42;
@@ -1396,15 +1384,24 @@ footer p {
     min-height: auto;
     padding-top: 0.5rem;
     padding-bottom: 0;
+    padding-inline: 1rem;
     background: transparent;
   }
 
   #topbar {
     gap: 0.55rem;
+    width: 100%;
     background: var(--topbar-bg);
     border: 1px solid var(--main-border-color);
     border-radius: 20px;
     box-shadow: none;
+  }
+
+  #topbar:has(#search.d-flex) {
+    background: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    padding-inline: 0;
   }
 
   #search {
@@ -1417,6 +1414,7 @@ footer p {
     flex: 1 1 auto;
     align-items: center;
     width: auto;
+    max-width: none;
     min-width: 0;
     margin-left: 0 !important;
   }
@@ -1435,7 +1433,11 @@ footer p {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    min-height: 2.85rem;
+    min-height: 2.75rem;
+    margin-left: 0.15rem;
+    padding: 0.18rem 0.05rem 0.18rem 0;
+    font-size: 0.96rem;
+    line-height: 1;
   }
 
   #breadcrumb {
