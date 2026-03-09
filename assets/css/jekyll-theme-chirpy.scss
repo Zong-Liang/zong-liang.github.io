@@ -1050,13 +1050,16 @@ code.highlighter-rouge {
 
 .table-wrapper > table {
   margin-bottom: 0;
-  width: max-content;
-  min-width: 100%;
+  width: 100%;
+  table-layout: auto;
 }
 
 .table-wrapper th,
 .table-wrapper td {
   vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .table-wrapper th {
