@@ -1030,6 +1030,8 @@ code.highlighter-rouge {
 .table-wrapper {
   border-radius: var(--anthropic-radius-md);
   border: 1px solid var(--tb-border-color);
+  width: fit-content;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -1050,7 +1052,7 @@ code.highlighter-rouge {
 
 .table-wrapper > table {
   margin-bottom: 0;
-  width: 100%;
+  width: auto;
   table-layout: auto;
 }
 

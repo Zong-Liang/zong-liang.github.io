@@ -40,6 +40,7 @@ find "$BASE_DIR" -type f -name "*.md" | while IFS= read -r filepath; do
     # 例如: "01_数组_字符串" -> "数组_字符串"
     # 例如: "17_Kadane算法" -> "Kadane算法"
     category_name=$(echo "$folder_name" | sed -E 's/^[0-9]+_//')
+    category_name=$(printf '%s' "$category_name" | tr '[:upper:]' '[:lower:]')
 
     # ================= 写入内容 =================
 
@@ -48,7 +49,7 @@ find "$BASE_DIR" -type f -name "*.md" | while IFS= read -r filepath; do
 ---
 title: $title_final
 date: $date_str 06:00:00 +0800
-categories: [Daily Coding, Top Interview 150, $category_name]
+categories: [leetcode_notes, top_interview_150, $category_name]
 tags: [$category_name]
 toc: true
 math: true

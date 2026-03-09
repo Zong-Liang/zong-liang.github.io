@@ -1,8 +1,8 @@
 ---
 title: AOP、Filter、Interceptor 全面分析与对比
 date: 2026-01-20 06:00:00 +0800
-categories: [Java Backend, Spring]
-tags: [AOP, Filter, Interceptor]
+categories: [java_backend, spring]
+tags: [aop, filter, interceptor]
 toc: true
 math: true
 pin: false
