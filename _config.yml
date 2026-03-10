@@ -211,6 +211,7 @@ exclude:
   - "*.gem"
   - "*.gemspec"
   - _private_notes
+  - template
   - docs
   - tools
   - README.md
