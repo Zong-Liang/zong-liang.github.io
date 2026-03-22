@@ -4,64 +4,51 @@
 
 ## Talk is cheap, show me the blog.
 
-## Local Development
+This is a personal blog built on top of `jekyll-theme-chirpy`, deeply customized with a tailored **Catppuccin** aesthetic.
 
-This project currently uses the local Ruby toolchain directly.
-It does not include a Docker-based or zero-setup development environment.
-The repository keeps a single cross-platform dev entrypoint:
-`ruby tools/dev.rb`.
+### 🎨 Theme & Typography Features
+The blog features a highly polished reading experience:
+- **Themes**: Exclusively uses **Catppuccin Latte** (Light Mode) and **Catppuccin Macchiato** (Dark Mode).
+- **Body Fonts**: `Nunito` & `Quicksand` for a playful, rounded, and friendly reading vibe, with `STYuanti` (幼圆/圆体) natively mapped for perfectly soft Chinese characters.
+- **Code Fonts**: A "Golden Straight" mix of `Fira Code` (English) and `LXGW WenKai Mono Lite` / 霞鹜文楷等宽版 (Chinese), ensuring elegant handwritten-style documentation without sacrificing strict code alignment.
 
-### Prerequisites
+---
 
-Before running the dev script, make sure your machine already has:
+## 💻 Local Development
 
-- Ruby installed and available in `PATH`
-- Bundler installed
+### 1. Prerequisites
 
-This project is currently using Bundler `2.6.9`.
-If Bundler is missing, install it with:
+Before running the project locally, ensure you have the following installed:
+- [Ruby](https://rubyinstaller.org/) (Version 3.0 or higher is recommended)
+- Bundler
 
+You can install/update Bundler by running:
 ```sh
-gem install bundler -v 2.6.9
+gem install bundler
 ```
 
-Quick install commands:
+> **Note for Windows users**: If `bundle install` fails during native extensions build, ensure you have installed the **RubyInstaller with MSYS2 Devkit**, which gives you `make` and `gcc`.
 
+### 2. Install Dependencies
+
+Navigate to the project root directory and install all required gems:
 ```sh
-# macOS (Homebrew)
-brew install ruby
-gem install bundler -v 2.6.9
-
-# Windows (winget / Microsoft Store package)
-winget install "Ruby 4.0"
-gem install bundler -v 2.6.9
+bundle install
 ```
 
-On Windows, PowerShell / CMD / Git Bash are all fine as long as `ruby` and
-`bundle` are available in `PATH`.
+### 3. Start the Local Server
 
-If `bundle install` fails on Windows because of native extensions, install the
-RubyInstaller MSYS2 Devkit as well, then rerun the commands above.
-
-Run the local Jekyll site with:
-
+Run the local Jekyll server with live-reload enabled (so the browser refreshes automatically when you modify files):
 ```sh
-ruby tools/dev.rb
+bundle exec jekyll serve --livereload
 ```
+Your site will then be available at 👉 **http://127.0.0.1:4000**
 
-Optional overrides:
-
+#### ⚠️ Port Conflicts
+If you encounter a `Permission denied - bind(2) for 127.0.0.1:4000` or `Address already in use` error, it means port 4000 is occupied by another application. You can easily specify a different port to start the server:
 ```sh
-JEKYLL_HOST=127.0.0.1 JEKYLL_PORT=4000 ruby tools/dev.rb
+bundle exec jekyll serve --livereload --port 8888
 ```
+Then visit 👉 **http://127.0.0.1:8888**
 
-The script will:
-
-- install project gems into `vendor/bundle`
-- start the Jekyll site at `http://127.0.0.1:4000`
-
-The script will not:
-
-- install Ruby for you
-- install Bundler for you
-- provision Docker / Dev Container automatically
+*(Alternatively, the repository provides a legacy cross-platform wrapper entrypoint: `ruby tools/dev.rb`)*
