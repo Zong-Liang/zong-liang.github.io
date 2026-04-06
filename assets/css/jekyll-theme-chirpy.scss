@@ -272,6 +272,31 @@ html[data-mode='dark'] {
   --right-rail-width: 17rem;
 }
 
+/* Fix vertical alignment for Serif typography tags */
+#tags .tag {
+  display: inline-block !important;
+  min-height: auto !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  padding: 0.65rem 0.95rem 0.45rem 0.95rem !important;
+  vertical-align: middle;
+}
+
+#tags .tag span {
+  vertical-align: baseline;
+  position: relative;
+  bottom: 0.12em;
+}
+
+.post-tag {
+  display: inline-block !important;
+  min-height: auto !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  padding: 0.45rem 0.7rem 0.25rem 0.7rem !important;
+  vertical-align: middle;
+}
+
 html {
   scroll-behavior: smooth;
 }
