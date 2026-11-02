@@ -1,5 +1,5 @@
 const swconf = {
-  version: "c333636974a2b661480a",
+  version: "8186049b9ee1d1060e71",
   purge: false,
   legacyMigration: {
     id: 'chirpy-root-2026-11',
