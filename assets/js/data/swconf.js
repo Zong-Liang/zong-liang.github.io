@@ -1,0 +1,1 @@
+const swconf = { cacheName: 'chirpy-1793604818',resources: [ '/assets/css/jekyll-theme-chirpy.css', '/', '/archives/', '/categories/', '/tags/', '/topics/', '/projects/', '/about/', ], interceptor: {paths: [ ],urlPrefixes: [ 'https://zongliang.goatcounter.com/counter/' ] }, purge: false };
