@@ -53,7 +53,7 @@
     mobileToggle.addEventListener('click', updateDrawer);
     mask.addEventListener('click', updateDrawer);
     document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || !document.body.hasAttribute('sidebar-display')) return;
+      if (event.key !== 'Escape' || event.defaultPrevented || document.querySelector('dialog[open]') || !document.body.hasAttribute('sidebar-display')) return;
       event.preventDefault();
       mask.click();
     });
