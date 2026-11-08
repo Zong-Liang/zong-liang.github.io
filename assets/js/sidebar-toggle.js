@@ -33,5 +33,32 @@
 
     updateButton();
     toggle.hidden = false;
+
+    const mobileToggle = document.getElementById('sidebar-trigger');
+    const mask = document.getElementById('mask');
+    const sidebar = document.getElementById('sidebar');
+    const main = document.getElementById('main-wrapper');
+
+    function updateDrawer() {
+      const expanded = document.body.hasAttribute('sidebar-display');
+      mobileToggle.setAttribute('aria-expanded', String(expanded));
+      main.inert = expanded;
+      if (expanded) {
+        sidebar.querySelector('nav a')?.focus({ preventScroll: true });
+      } else {
+        (mobileToggle.getClientRects().length ? mobileToggle : toggle).focus({ preventScroll: true });
+      }
+    }
+
+    mobileToggle.addEventListener('click', updateDrawer);
+    mask.addEventListener('click', updateDrawer);
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !document.body.hasAttribute('sidebar-display')) return;
+      event.preventDefault();
+      mask.click();
+    });
+    window.addEventListener('resize', () => {
+      if (document.body.hasAttribute('sidebar-display') && !mobileToggle.getClientRects().length) mask.click();
+    });
   });
 })();
