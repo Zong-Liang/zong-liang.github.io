@@ -3,7 +3,11 @@ var Theme = (() => {
   const key = 'wobble.appearance';
   const backgrounds = root.dataset.backgrounds.split(' ');
   const darkBackgrounds = root.dataset.darkBackgrounds.split(' ');
+  const backgroundAliases = new Map((root.dataset.backgroundAliases ?? 'wobble:neutral').split(',').map(pair => pair.split(':')));
   const fonts = root.dataset.fonts.split(' ');
+  const fontAliases = new Map([['wobble', 'sans'], ['fangsong', 'marker']]);
+  const fontStylesheets = JSON.parse(root.dataset.fontStylesheets ?? '[]');
+  const fontLoads = new Map();
   const defaults = { background: root.dataset.background, font: root.dataset.font };
   const preferences = { ...defaults };
 
@@ -41,8 +45,8 @@ var Theme = (() => {
       || (!stored && ['light', 'dark'].includes(sessionMode));
 
     if (legacy) stored = migrate(stored, sessionMode);
-    const background = stored?.background === 'wobble' ? 'neutral' : stored?.background;
-    const font = stored?.font === 'wobble' ? 'sans' : stored?.font;
+    const background = backgroundAliases.get(stored?.background) ?? stored?.background;
+    const font = fontAliases.get(stored?.font) ?? stored?.font;
     if (backgrounds.includes(background)) preferences.background = background;
     if (fonts.includes(font)) preferences.font = font;
     if (legacy || background !== stored?.background || font !== stored?.font) save();
@@ -57,8 +61,33 @@ var Theme = (() => {
     ID: 'theme-mode',
     switchable: true,
     get visualState() { return root.dataset.colorScheme; },
-    getThemeMapper(light, dark) { return { light, dark }; }
+    getThemeMapper(light, dark) { return { light, dark }; },
+    fontStylesReady
   };
+
+  function fontStylesReady(font) {
+    const urls = fontStylesheets[fonts.indexOf(font)] ?? [];
+    return Promise.all(urls.map(url => {
+      if (!fontLoads.has(url)) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+        // FontsAPI rejects local preview referrers.
+        link.referrerPolicy = 'no-referrer';
+        const loaded = new Promise(resolve => {
+          link.addEventListener('load', resolve, { once: true });
+          link.addEventListener('error', () => {
+            fontLoads.delete(url);
+            link.remove();
+            resolve();
+          }, { once: true });
+        });
+        fontLoads.set(url, loaded);
+        document.head.append(link);
+      }
+      return fontLoads.get(url);
+    }));
+  }
 
   function updateThemeColor() {
     const background = getComputedStyle(root).getPropertyValue('--main-bg').trim();
@@ -71,14 +100,7 @@ var Theme = (() => {
     root.dataset.colorScheme = darkBackgrounds.includes(preferences.background) ? theme.DARK : theme.LIGHT;
     root.dataset.font = preferences.font;
 
-    if (preferences.font === 'wenkai' && !document.getElementById('wenkai-webfont')) {
-      const stylesheet = document.createElement('link');
-      stylesheet.id = 'wenkai-webfont';
-      stylesheet.rel = 'stylesheet';
-      stylesheet.href = 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/lxgwwenkailite-regular.css';
-      stylesheet.addEventListener('error', () => stylesheet.remove(), { once: true });
-      document.head.append(stylesheet);
-    }
+    fontStylesReady(preferences.font);
 
     if (document.readyState !== 'loading') {
       updateThemeColor();

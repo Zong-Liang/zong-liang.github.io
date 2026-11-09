@@ -7,6 +7,7 @@
   function makeSheet() {
     const frame = document.createElement('main');
     frame.className = 'post-export-frame';
+    frame.dataset.font = document.documentElement.dataset.font;
     frame.inert = true;
     frame.setAttribute('aria-hidden', 'true');
 
@@ -72,13 +73,13 @@
     const pixelWidth = Math.floor(width * scale);
     const pixelHeight = Math.floor(height * scale);
     const fitsOnCanvas = pixelHeight <= 30_000 && pixelWidth * pixelHeight <= preferredArea;
-    const { background, colorScheme, font } = document.documentElement.dataset;
+    const { background, colorScheme } = document.documentElement.dataset;
     const renderOptions = {
       backgroundColor: getComputedStyle(document.body).backgroundColor,
       logging: false,
       width,
       async onclone(clone) {
-        Object.assign(clone.documentElement.dataset, { background, colorScheme, font });
+        Object.assign(clone.documentElement.dataset, { background, colorScheme });
         await clone.fonts.ready;
       }
     };
@@ -144,9 +145,13 @@
     const frame = makeSheet();
     try {
       const sheet = frame.firstElementChild;
-      const { default: render } = await import('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/+esm');
-      const partial = await prepareMedia(sheet);
+      const [{ default: render }, partial] = await Promise.all([
+        import('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/+esm'),
+        prepareMedia(sheet),
+        Theme.fontStylesReady(frame.dataset.font)
+      ]);
       document.body.append(frame);
+      sheet.getBoundingClientRect();
       await document.fonts.ready;
 
       const png = await renderImage(render, sheet);
