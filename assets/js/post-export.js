@@ -17,8 +17,11 @@
       article.querySelector(':scope > .content').cloneNode(true)
     );
     sheet.querySelector('#pageviews')?.closest('span')?.remove();
-    for (const element of sheet.querySelectorAll('.post-export-control, .code-header button, script')) {
+    for (const element of sheet.querySelectorAll('.post-export-control, .code-header button, script, .table-resizer, colgroup.table-resize-cols')) {
       element.remove();
+    }
+    for (const table of sheet.querySelectorAll('.table-wrapper > table[style]')) {
+      table.removeAttribute('style');
     }
     frame.append(sheet);
     return frame;
